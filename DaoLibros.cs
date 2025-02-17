@@ -31,10 +31,9 @@ namespace BD2
                         cmd.Parameters.AddWithValue("@CARRERA", libro.CARRERA);
                         cmd.Parameters.AddWithValue("@MATERIA", libro.MATERIA);
 
-                        // Ejecutar el comando y obtener el ID
-                        int idGenerado = Convert.ToInt32(cmd.ExecuteScalar());  // Obtiene el ID generado
+                        int idGenerado = Convert.ToInt32(cmd.ExecuteScalar());  
 
-                        // Asignar el ID al objeto libro
+                      
                         libro.ID = idGenerado;
                     }
                 }

@@ -32,7 +32,7 @@ namespace BD2
                 return;
             }
 
-            // Validación para que los campos numéricos no acepten letras o valores vacíos
+            
             if (!int.TryParse(txtNumEdicion.Text, out int numEdicion))
             {
                 Response.Write("<script>alert('El campo Número de Edición debe ser un número válido.');</script>");
