@@ -84,5 +84,8 @@ namespace BD2
             txtCarrera.Text = "";
             txtMateria.Text = "";
         }
-    }
+    } 
+
+
 }
+ 
