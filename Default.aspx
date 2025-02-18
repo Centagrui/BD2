@@ -9,15 +9,15 @@
 <body>
     <form runat="server">
         <h2>Registro de Libros</h2>
-        ISBN: <asp:TextBox ID="txtISBN" runat="server" /><br />
-        Título: <asp:TextBox ID="txtTitulo" runat="server" /><br />
-        Número de Edición: <asp:TextBox ID="txtNumEdicion" runat="server" /><br />
+        ISBN: <asp:TextBox ID="txtISBN" runat="server" MaxLength="13" OnTextChanged="txtISBN_TextChanged" /><br />
+        Título: <asp:TextBox ID="txtTitulo" runat="server" MaxLength="40" /><br />
+        Número de Edición: <asp:TextBox ID="txtNumEdicion" runat="server" MaxLength="9" /><br />
         Año de Publicación: <asp:TextBox ID="txtAnioPublicacion" runat="server" /><br />
-        Autores: <asp:TextBox ID="txtAutores" runat="server" /><br />
-        País: <asp:TextBox ID="txtPais" runat="server" /><br />
-        Sinopsis: <asp:TextBox ID="txtSinopsis" runat="server" TextMode="MultiLine" /><br />
-        Carrera: <asp:TextBox ID="txtCarrera" runat="server" /><br />
-        Materia: <asp:TextBox ID="txtMateria" runat="server" /><br />
+        Autores: <asp:TextBox ID="txtAutores" runat="server" MaxLength="90" /><br />
+        País: <asp:TextBox ID="txtPais" runat="server" MaxLength="30" /><br />
+        Sinopsis: <asp:TextBox ID="txtSinopsis" runat="server" TextMode="MultiLine" MaxLength="500" /><br />
+        Carrera: <asp:TextBox ID="txtCarrera" runat="server" MaxLength="50" /><br />
+        Materia: <asp:TextBox ID="txtMateria" runat="server" MaxLength="50" /><br />
         <asp:Button ID="btnAgregar" runat="server" Text="Agregar Libro" OnClick="btnAgregar_Click" />
         
         <h3>Lista de Libros</h3>
