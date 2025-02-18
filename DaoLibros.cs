@@ -48,36 +48,43 @@ namespace BD2
 
         public List<Libros> ObtenerLibros()
         {
-            List<Libros> listaLibros = new List<Libros>();
-
-            using (MySqlConnection conexion = new MySqlConnection(conexionString))
+            try
             {
-                conexion.Open();
-                string query = "SELECT * FROM Libros";
+                List<Libros> listaLibros = new List<Libros>();
 
-                using (MySqlCommand cmd = new MySqlCommand(query, conexion))
-                using (MySqlDataReader reader = cmd.ExecuteReader())
+                using (MySqlConnection conexion = new MySqlConnection(conexionString))
                 {
-                    while (reader.Read())
+                    conexion.Open();
+                    string query = "SELECT * FROM Libros";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conexion))
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        listaLibros.Add(new Libros
+                        while (reader.Read())
                         {
-                            ID = reader.IsDBNull(reader.GetOrdinal("ID")) ? 0 : reader.GetInt32("ID"),
-                            ISBN = reader.GetString("ISBN"),
-                            TITULO = reader.GetString("TITULO"),
-                            NUM_EDICION = reader.GetInt32("NUM_EDICION"),
-                            ANIO_PUBLICACION = reader.GetInt32("ANIO_PUBLICACION"),
-                            AUTORES = reader.GetString("AUTORES"),
-                            PAIS = reader.GetString("PAIS"),
-                            SINOPSIS = reader.GetString("SINOPSIS"),
-                            CARRERA = reader.GetString("CARRERA"),
-                            MATERIA = reader.GetString("MATERIA")
-                        });
+                            listaLibros.Add(new Libros
+                            {
+                                ID = reader.IsDBNull(reader.GetOrdinal("ID")) ? 0 : reader.GetInt32("ID"),
+                                ISBN = reader.GetString("ISBN"),
+                                TITULO = reader.GetString("TITULO"),
+                                NUM_EDICION = reader.GetInt32("NUM_EDICION"),
+                                ANIO_PUBLICACION = reader.GetInt32("ANIO_PUBLICACION"),
+                                AUTORES = reader.GetString("AUTORES"),
+                                PAIS = reader.GetString("PAIS"),
+                                SINOPSIS = reader.GetString("SINOPSIS"),
+                                CARRERA = reader.GetString("CARRERA"),
+                                MATERIA = reader.GetString("MATERIA")
+                            });
+                        }
                     }
                 }
-            }
 
-            return listaLibros;
+                return listaLibros;
+            } 
+            catch(Exception)
+            {
+                return null;
+            }            
         }
     }
 }
